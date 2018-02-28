@@ -132,10 +132,29 @@
                                     <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 								</article>
 							</div>
+                            <div class="4u">
+								<article class="box style2">
+									<a href="#" class="image featured"><img src="images/distributions.jpg" alt="" /></a>
+									<h3><a href="#">Numbers in Language Modelling</a></h3>
+									<p>
+                                    Text often contains numbers to convey specific information in various domains,
+                                    e.g. from everyday life ("John is 1.75 meters tall")
+                                    to scientific and clinical documents ("severe dilation of the left ventricle with EDV=355ml").
+                                    There is a relation between the words and numbers we use, as seen in the figure above.
+                                    In this example, we have extracted from clinical reports pairs of numbers (clinical measurements) and words (descriptions of severity of a clinical condition: "non", "mild", "severe") and estimated the distribution of words given numbers and that of numbers given words.
+                                    <br/>
+                                    In language modelling, most numbers are often treated as out-of-vocabulary words (or masked under an "UNKNOWN NUMBER" category) and, thus, their informational content is lost. The goal of this project is to investigate and evaluate extensions to language models that allow them to incorporate numeric information.
+                                    <br/>
+                                    We find that extending the input of language models to include the magnitude of numeric tokens can lead to improvements in perplexity and the downstream tasks of semantic error correction
+                                    (<a href="https://aclanthology.info/pdf/D/D16/D16-1101.pdf">Spithourakis et al., 2016a</a>)
+                                    and text prediction
+                                    (<a href="http://www.aclweb.org/anthology/W16-6102">Spithourakis et al., 2016b</a>).
+                                    </p>
+								</article>
 							<div class="4u">
 								<article class="box style2">
 									<a href="#" class="image featured"><img src="images/human-android.jpg" alt="" /></a>
-									<h3><a href="#">Human Code Computer Tongue</a></h3>
+									<h3><a href="#">Human Code</b>Computer Tongue</a></h3>
 									<p>
                                     Together with poet <a href="https://literature.britishcouncil.org/writer/zena-edwards">Zena Edwards</a>
                                     we have sought to explore the spectrum between artificial and human creativity.
