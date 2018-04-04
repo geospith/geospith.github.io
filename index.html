@@ -23,10 +23,89 @@
 		</noscript>
 		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
 		<!--[if lte IE 9]><link rel="stylesheet" href="css/ie/v9.css" /><![endif]-->
+
+        <!-- Core CSS file -->
+        <link rel="stylesheet" href="js/photoswipe/photoswipe.css"> 
+        <!-- Skin CSS file (styling of UI - buttons, caption, etc.)
+	         In the folder of skin CSS file there are also:
+	         - .png and .svg icons sprite, 
+	         - preloader.gif (for browsers that do not support CSS animations) -->
+        <link rel="stylesheet" href="js/photoswipe/default-skin/default-skin.css"> 
+        <!-- Core JS file -->
+        <script src="js/photoswipe/photoswipe.min.js"></script> 
+        <!-- UI JS file -->
+        <script src="js/photoswipe/photoswipe-ui-default.min.js"></script>
+        <script>
+            function openGalleryA() {
+                var pswpElement = document.querySelectorAll('.pswp')[0];
+                // build items array
+                var items = [
+                    {
+                        src: 'images/poetryAI/pipeline.jpg',
+                        w: 1836, h: 2048,
+                        title: 'Poem written by neural network powered by 20 humans as neurons'
+                    },
+                    {
+                        src: 'images/poetryAI/dan.jpg',
+                        w: 3024, h: 4032,
+                        title: 'Spoken word performance by Dan Simpson'
+                    },
+                    {
+                        src: 'images/poetryAI/xana.jpg',
+                        w: 3024, h: 4032,
+                        title: 'Live looping performance by Xana'
+                    },
+                    {
+                        src: 'images/poetryAI/poetree-air.jpg',
+                        w: 3024, h: 4032,
+                        title: 'Poetree "Man on Cliff-Face above Water"'
+                    },
+                    {
+                        src: 'images/poetryAI/poetree-fire.jpg',
+                        w: 3024, h: 4032,
+                        title: 'Poetree "Sparking Fireman Watched through Window"'
+                    },
+                    {
+                        src: 'images/poetryAI/poetree-water.jpg',
+                        w: 3024, h: 4032,
+                        title: 'Poetree "Woman in Bikini Rides Shark"'
+                    },
+                    {
+                        src: 'images/poetryAI/zena.jpg',
+                        w: 1024, h: 764,
+                        title: 'Zena Edwards at the Human Code Computer Tongue workshop'
+                    },
+                    {
+                        src: 'images/poetryAI/piotr.jpg',
+                        w: 1200, h: 675,
+                        title: 'Improv theatre performance by Piotr Mirowski and A.L.E.X.'
+                    },
+                ];
+                // define options (if needed)
+                var options = {
+                  	history: false,
+                  	focus: false,
+                    showAnimationDuration: 0,
+                    hideAnimationDuration: 0,
+                    enableUIWebViewRepositionTimeout: true,
+                };
+                var gallery = new PhotoSwipe( pswpElement, PhotoSwipeUI_Default, items, options);
+                gallery.init();
+            };
+        </script>
         <style>
         p {
             text-align: justify;
             text-justify: inter-word;
+        }
+        .buttonlink {
+             background:none!important;
+             color:inherit;
+             border:none; 
+             padding:0!important;
+             font: inherit;
+             /* border-bottom:1px solid #444; */
+             cursor: pointer;
         }
         </style>
 	</head>
@@ -41,7 +120,6 @@
 					<li><a href="#contact">Contact</a></li>
 				</ul>
 			</nav>
-
 		<!-- Home -->
 			<div class="wrapper style1 first">
 				<article class="container" id="top">
@@ -55,6 +133,7 @@
 							</header>
 							<p>
 								PhD candidate in Natural Language Processing
+                                <button onclick="openGalleryA()">here!</button>
 							</p>
 						</div>
 					</div>
@@ -143,7 +222,7 @@
 						<div class="row">
                             <div class="8u">
 								<article class="box style2">
-									<a href="#" class="image featured"><img src="images/distributions.jpg" alt="" /></a>
+									<a class="image featured"><img src="images/distributions.jpg" alt="" /></a>
 									<h3>Numbers in Language Modelling</h3>
 									<p>
                                     Text often contains numbers to convey specific information in various domains,
@@ -170,8 +249,9 @@
 						<div class="row">
 							<div class="8u">
 								<article class="box style2">
-									<a href="#" class="image featured"><img src="images/human-android.jpg" alt="" /></a>
+									<a href="#" class="image featured"><img src="images/human-android.jpg" alt="" onclick="openGalleryA()"/></a>
 									<h3>Human Code</br>Computer Tongue</h3>
+                                    <button class="buttonlink" onclick="openGalleryA()"/>[photos]</button>
 									<p>
                                     Together with poet <a href="https://literature.britishcouncil.org/writer/zena-edwards">Zena Edwards</a>
                                     we have sought to explore the spectrum between artificial and human creativity.
@@ -219,11 +299,8 @@
 					</header>
 					<div class="container">
 						<div class="row" align="left">
-							<ul style="list-style-type:circle;">
-                                <li>
-                                    B. Riedel, I. Augenstein, <strong>G. Spithourakis</strong>, S. Riedel. A simple but tough-to-beat baseline for the Fake News Challenge stance detection task. <i>arXiv 2017</i>. 
-                                    <a href="https://arxiv.org/abs/1707.03264">[paper]</a>
-                                </li>
+                            Conference Proceedings
+                            <ul style="list-style-type:circle;">
                                 <li>
                                     N. Mostafazadeh, C. Brockett, B. Dolan, M. Galley, J. Gao, <strong>G. Spithourakis</strong>, L. Vanderwende.
                                     Image-Grounded Conversations: Multimodal Context for Natural Question and Response Generation. <i>IJCNLP 2017</i>,
@@ -234,24 +311,30 @@
                                     <a href="https://arxiv.org/abs/1608.04147">[paper]</a>
 								</li>
 								<li>
-									<strong>G. Spithourakis</strong>, S. E. Petersen, S. Riedel. Clinical Text Prediction with Numerically Grounded Conditional Language Models. <i>EMNLP workshop, 2016</i>.
-                                    <a href="https://arxiv.org/abs/1610.06370">[paper]</a>
-								</li>
-								<li>
 									J. Li, M. Galley, C. Brockett, <strong>G. Spithourakis</strong>, J. Gao, B. Dolan. A Persona-Based Neural Conversation Model. <i>ACL, 2016</i>.
                                     <a href="https://arxiv.org/abs/1603.06155">[paper]</a>
 								</li>
+							</ul>
+                            <br/> Workshop Proceedings
+                            <ul style="list-style-type:circle;">                                
 								<li>
-									<strong>G. Spithourakis</strong>, F. Petropoulos, K. Nikolopoulos and V. Assimakopoulos. Amplifying the learning effect via a
-									forecasting and foresight support system. <i>International Journal of Forecasting</i>, 31(1):20-32, 2015.
-                                    <a href="https://www.sciencedirect.com/science/article/pii/S0169207014000922">[paper]</a>
-								</li>
+									<strong>G. Spithourakis</strong>, S. E. Petersen, S. Riedel. Clinical Text Prediction with Numerically Grounded Conditional Language Models. <i>EMNLP workshop, 2016</i>.
+                                    <a href="https://arxiv.org/abs/1610.06370">[paper]</a>
+								</li>								
 								<li>
-									<strong>G. Spithourakis</strong>, S. Petersen, and S. Riedel. Harnessing the predictive power of clinical narrative to resolve
+									<strong>G. Spithourakis</strong>, S. E. Petersen, and S. Riedel. Harnessing the predictive power of clinical narrative to resolve
 									inconsistencies and omissions in EHRs. Short paper and poster presentation in 2nd Workshop on Machine Learning
 									for Clinical Data Analysis, Healthcare and Genomics, NIPS 2014.
 
 								</li>
+							</ul>
+                            <br/> Journals
+                            <ul style="list-style-type:circle;">                                
+								<li>
+									<strong>G. Spithourakis</strong>, F. Petropoulos, K. Nikolopoulos and V. Assimakopoulos. Amplifying the learning effect via a
+									forecasting and foresight support system. <i>International Journal of Forecasting</i>, 31(1):20-32, 2015.
+                                    <a href="https://www.sciencedirect.com/science/article/pii/S0169207014000922">[paper]</a>
+								</li>								
 								<li>
 									<strong>G. Spithourakis</strong>, F. Petropoulos, K. Nikolopoulos and V. Assimakopoulos. A systemic view of the ADIDA
 									framework. <i>IMA Journal of Management Mathematics</i>, 25(2): 125-137, 2014.
@@ -266,8 +349,15 @@
 									<strong>G. Spithourakis</strong>, F. Petropoulos, M.Z. Babai, K. Nikolopoulos and V. Assimakopoulos. Improving the performance of
 									popular supply chain forecasting techniques: an empirical investigation. <i>Supply Chain Forum: an International
 									Journal</i>, 12(4):16-25, 2012.
-
+                                    <a href="https://www.tandfonline.com/doi/abs/10.1080/16258312.2011.11517277">[paper]</a>
 								</li>
+							</ul>
+                            <br/> Arxiv                    
+							<ul style="list-style-type:circle;">
+                                <li>
+                                    B. Riedel, I. Augenstein, <strong>G. Spithourakis</strong>, S. Riedel. A simple but tough-to-beat baseline for the Fake News Challenge stance detection task. <i>arXiv 2017</i>. 
+                                    <a href="https://arxiv.org/abs/1707.03264">[paper]</a>
+                                </li>                                
 							</ul>
 						</div>
 					</div>
@@ -354,6 +444,60 @@
 					</footer>
 				</article>
 			</div>
+
+
+
+
+            <!-- PhotoSwipe -->
+            <!-- Root element of PhotoSwipe. Must have class pswp. -->
+            <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+	            <!-- Background of PhotoSwipe. 
+		             It's a separate element as animating opacity is faster than rgba(). -->
+                <div class="pswp__bg"></div>
+	            <!-- Slides wrapper with overflow:hidden. -->
+                <div class="pswp__scroll-wrap">
+		            <!-- Container that holds slides. 
+			            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+			            Don't modify these 3 pswp__item elements, data is added later on. -->
+		            <div class="pswp__container">
+			            <div class="pswp__item"></div>
+			            <div class="pswp__item"></div>
+			            <div class="pswp__item"></div>
+		            </div>
+		            <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+		            <div class="pswp__ui pswp__ui--hidden">
+			            <div class="pswp__top-bar">
+				            <!--  Controls are self-explanatory. Order can be changed. -->
+				            <div class="pswp__counter"></div>
+				            <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+				            <button class="pswp__button pswp__button--share" title="Share"></button>
+				            <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+				            <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+				            <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+				            <!-- element will get class pswp__preloader--active when preloader is running -->
+				            <div class="pswp__preloader">
+					            <div class="pswp__preloader__icn">
+					              <div class="pswp__preloader__cut">
+					                <div class="pswp__preloader__donut"></div>
+					              </div>
+					            </div>
+				            </div>
+			            </div>
+	                    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+				            <div class="pswp__share-tooltip"></div> 
+	                    </div>
+			            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+			            </button>
+			            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+			            </button>
+			            <div class="pswp__caption">
+				            <div class="pswp__caption__center"></div>
+			            </div>
+	                </div>
+	            </div>
+            </div>
+
+    
 
 	</body>
 </html>
