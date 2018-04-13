@@ -104,13 +104,50 @@
              border:none; 
              padding:0!important;
              font: inherit;
-             /* border-bottom:1px solid #444; */
              cursor: pointer;
         }
+        
+        /* The Modal (background) */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+
+        /* Modal Content/Box */
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto; /* 15% from the top and centered */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%; /* Could be more or less, depending on screen size */
+        }
+
+        /* The Close Button */
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
         </style>
 	</head>
 	<body>
-
 		<!-- Nav -->
 			<nav id="nav">
 				<ul class="container">
@@ -134,6 +171,39 @@
 							<p>
 								PhD candidate in Natural Language Processing
 							</p>
+
+                            
+                            <!-- Modal Scripts -->
+                            <script>
+                            function close_modal(modal) {
+                                modal.style.display = "none";
+                            }
+                            function close_modal_with_id(modal_id) {
+                                var modal = document.getElementById(modal_id);
+                                close_modal(modal);
+                            }
+                            function close_parent_modal(e) {
+                                var modal_id = e.parentNode.parentNode.id
+                                var modal = document.getElementById(modal_id);
+                                close_modal(modal);
+                            }
+                            function open_modal_with_id(modal_id) {
+                                var modal = document.getElementById(modal_id);
+                                modal.style.display = "block";
+                            }
+                            // When the user clicks anywhere outside of the modal, close it
+                            function close_all_modals(event) {
+                                var modals = document.getElementsByClassName('modal');
+                                for (var i = 0; i < modals.length; ++i) {
+                                    var modal = modals[i];
+                                    if (event.target == modal) {
+                                        close_modal(modal);
+                                    }
+                                }
+                            }                           
+                            window.onclick = close_all_modals
+                            </script>
+
 						</div>
 					</div>
 				</article>
@@ -308,61 +378,210 @@
                             Conference Proceedings
                             <ul style="list-style-type:circle;">
                                 <li>
+                                    <div id="mostafazadeh2017image" class="modal">
+                                      <div class="modal-content">
+                                        <span class="close" onclick="close_parent_modal(this)">&times;</span>
+                                         <p class="bib">
+                                          @article{mostafazadeh2017image,
+                                          title={Image-grounded conversations: Multimodal context for natural question and response generation},
+                                          author={Mostafazadeh, Nasrin and Brockett, Chris and Dolan, Bill and Galley, Michel and Gao, Jianfeng and Spithourakis, Georgios P and Vanderwende, Lucy},
+                                          journal={arXiv preprint arXiv:1701.08251},
+                                          year={2017}
+                                          }
+                                        </p>
+                                      </div>
+                                    </div>
                                     N. Mostafazadeh, C. Brockett, B. Dolan, M. Galley, J. Gao, <strong>G. Spithourakis</strong>, L. Vanderwende.
                                     Image-Grounded Conversations: Multimodal Context for Natural Question and Response Generation. <i>IJCNLP 2017</i>,
                                     <a href="https://arxiv.org/abs/1701.08251">[paper]</a>
+                                    <button class="buttonlink" onclick="open_modal_with_id('mostafazadeh2017image')"><a>[bib]</a></button>
 								</li>
 								<li>
+                                    <div id="spithourakis2016numerically" class="modal">
+                                      <div class="modal-content">
+                                        <span class="close" onclick="close_parent_modal(this)">&times;</span>
+                                        <p class="bib">
+                                        @article{spithourakis2016numerically,
+                                          title={Numerically Grounded Language Models for Semantic Error Correction},
+                                          author={Spithourakis, Georgios P and Augenstein, Isabelle and Riedel, Sebastian},
+                                          journal={arXiv preprint arXiv:1608.04147},
+                                          year={2016}
+                                        }
+                                        </p>
+                                      </div>
+                                    </div>
 									<strong>G. Spithourakis</strong>, I. Augenstein, S. Riedel. Numerically Grounded Language Models for Semantic Error Correction. <i>EMNLP, 2016</i>.
                                     <a href="https://arxiv.org/abs/1608.04147">[paper]</a>
+                                    <button class="buttonlink" onclick="open_modal_with_id('spithourakis2016numerically')"><a>[bib]</a></button>
 								</li>
 								<li>
+                                    <div id="li2016persona" class="modal">
+                                      <div class="modal-content">
+                                        <span class="close" onclick="close_parent_modal(this)">&times;</span>
+                                        <p class="bib">
+                                        @article{li2016persona,
+                                          title={A persona-based neural conversation model},
+                                          author={Li, Jiwei and Galley, Michel and Brockett, Chris and Spithourakis, Georgios P and Gao, Jianfeng and Dolan, Bill},
+                                          journal={arXiv preprint arXiv:1603.06155},
+                                          year={2016}
+                                        }
+                                        </p>
+                                      </div>
+                                    </div>
 									J. Li, M. Galley, C. Brockett, <strong>G. Spithourakis</strong>, J. Gao, B. Dolan. A Persona-Based Neural Conversation Model. <i>ACL, 2016</i>.
                                     <a href="https://arxiv.org/abs/1603.06155">[paper]</a>
+                                    <button class="buttonlink" onclick="open_modal_with_id('li2016persona')"><a>[bib]</a></button>
 								</li>
 							</ul>
                             <br/> Workshop Proceedings
                             <ul style="list-style-type:circle;">                                
 								<li>
+                                    <div id="spithourakis2016clinical" class="modal">
+                                      <div class="modal-content">
+                                        <span class="close" onclick="close_parent_modal(this)">&times;</span>
+                                        <p class="bib">
+                                        @article{spithourakis2016clinical,
+                                          title={Clinical Text Prediction with Numerically Grounded Conditional Language Models},
+                                          author={Spithourakis, Georgios P and Petersen, Steffen E and Riedel, Sebastian},
+                                          journal={EMNLP 2016},
+                                          pages={6},
+                                          year={2016}
+                                        }
+                                        </p>
+                                      </div>
+                                    </div>
 									<strong>G. Spithourakis</strong>, S. E. Petersen, S. Riedel. Clinical Text Prediction with Numerically Grounded Conditional Language Models. <i>EMNLP workshop, 2016</i>.
                                     <a href="https://arxiv.org/abs/1610.06370">[paper]</a>
+                                    <button class="buttonlink" onclick="open_modal_with_id('spithourakis2016clinical')"><a>[bib]</a></button>
 								</li>								
 								<li>
+                                    <div id="" class="modal">
+                                      <div class="modal-content">
+                                        <span class="close" onclick="close_parent_modal(this)">&times;</span>
+                                         <p class="bib">
+                                        </p>
+                                      </div>
+                                    </div>
 									<strong>G. Spithourakis</strong>, S. E. Petersen, and S. Riedel. Harnessing the predictive power of clinical narrative to resolve
 									inconsistencies and omissions in EHRs. Short paper and poster presentation in 2nd Workshop on Machine Learning
 									for Clinical Data Analysis, Healthcare and Genomics, NIPS 2014.
-
 								</li>
 							</ul>
                             <br/> Journals
                             <ul style="list-style-type:circle;">                                
 								<li>
+                                    <div id="spithourakis2015amplifying" class="modal">
+                                      <div class="modal-content">
+                                        <span class="close" onclick="close_parent_modal(this)">&times;</span>
+                                        <p class="bib">
+                                        @article{spithourakis2015amplifying,
+                                          title={Amplifying the learning effects via a forecasting and foresight support system},
+                                          author={Spithourakis, Georgios P and Petropoulos, Fotios and Nikolopoulos, Konstantinos and Assimakopoulos, Vassilios},
+                                          journal={International Journal of Forecasting},
+                                          volume={31},
+                                          number={1},
+                                          pages={20--32},
+                                          year={2015},
+                                          publisher={Elsevier}
+                                        }
+                                        </p>
+                                      </div>
+                                    </div>
 									<strong>G. Spithourakis</strong>, F. Petropoulos, K. Nikolopoulos and V. Assimakopoulos. Amplifying the learning effect via a
 									forecasting and foresight support system. <i>International Journal of Forecasting</i>, 31(1):20-32, 2015.
                                     <a href="https://www.sciencedirect.com/science/article/pii/S0169207014000922">[paper]</a>
+                                    <button class="buttonlink" onclick="open_modal_with_id('spithourakis2015amplifying')"><a>[bib]</a></button>
 								</li>								
 								<li>
+                                    <div id="spithourakis2014systemic" class="modal">
+                                      <div class="modal-content">
+                                        <span class="close" onclick="close_parent_modal(this)">&times;</span>
+                                        <p class="bib">
+                                        @article{spithourakis2014systemic,
+                                          title={A systemic view of the ADIDA framework},
+                                          author={Spithourakis, Georgios P and Petropoulos, Fotios and Nikolopoulos, Konstantinos and Assimakopoulos, Vassilios},
+                                          journal={IMA Journal of Management Mathematics},
+                                          volume={25},
+                                          number={2},
+                                          pages={125--137},
+                                          year={2014},
+                                          publisher={OUP}
+                                        }
+                                        </p>
+                                      </div>
+                                    </div>
 									<strong>G. Spithourakis</strong>, F. Petropoulos, K. Nikolopoulos and V. Assimakopoulos. A systemic view of the ADIDA
 									framework. <i>IMA Journal of Management Mathematics</i>, 25(2): 125-137, 2014.
-                                    <a href="https://academic.oup.com/imaman/article/25/2/125/793668">[paper]</a>							
+                                    <a href="https://academic.oup.com/imaman/article/25/2/125/793668">[paper]</a>
+                                    <button class="buttonlink" onclick="open_modal_with_id('spithourakis2014systemic')"><a>[bib]</a></button>					
 								</li>
 								<li>
+                                    <div id="petropoulos2013empirical" class="modal">
+                                      <div class="modal-content">
+                                        <span class="close" onclick="close_parent_modal(this)">&times;</span>
+                                        <p class="bib">
+                                        @article{petropoulos2013empirical,
+                                          title={Empirical heuristics for improving intermittent demand forecasting},
+                                          author={Petropoulos, Fotios and Nikolopoulos, Konstantinos and Spithourakis, Georgios P and Assimakopoulos, Vassilios},
+                                          journal={Industrial Management \& Data Systems},
+                                          volume={113},
+                                          number={5},
+                                          pages={683--696},
+                                          year={2013},
+                                          publisher={Emerald Group Publishing Limited}
+                                        }
+                                        </p>
+                                      </div>
+                                    </div>
 									F. Petropoulos, K. Nikolopoulos, <strong>G. Spithourakis</strong> and V. Assimakopoulos. Empirical heuristics for improving
 									intermittent demand forecasting. <i>Industrial Management & Data Systems</i>, 113(5):683-696, 2013.
                                     <a href="http://www.emeraldinsight.com/doi/abs/10.1108/02635571311324142">[paper]</a>
+                                    <button class="buttonlink" onclick="open_modal_with_id('petropoulos2013empirical')"><a>[bib]</a></button>
 								</li>
 								<li>
+                                    <div id="spithourakis2011improving" class="modal">
+                                      <div class="modal-content">
+                                        <span class="close" onclick="close_parent_modal(this)">&times;</span>
+                                        <p class="bib">
+                                        @inproceedings{spithourakis2011improving,
+                                          title={Improving the performance of popular supply chain forecasting techniques},
+                                          author={Spithourakis, Georgios P and Petropoulos, Fotios and Babai, M Zied and Nikolopoulos, Konstantinos and Assimakopoulos, Vassilios},
+                                          booktitle={Supply Chain Forum: an international journal},
+                                          volume={12},
+                                          number={4},
+                                          pages={16--25},
+                                          year={2011},
+                                          organization={Taylor \& Francis}
+                                        }
+                                        </p>
+                                      </div>
+                                    </div>
 									<strong>G. Spithourakis</strong>, F. Petropoulos, M.Z. Babai, K. Nikolopoulos and V. Assimakopoulos. Improving the performance of
 									popular supply chain forecasting techniques: an empirical investigation. <i>Supply Chain Forum: an International
 									Journal</i>, 12(4):16-25, 2012.
                                     <a href="https://www.tandfonline.com/doi/abs/10.1080/16258312.2011.11517277">[paper]</a>
+                                    <button class="buttonlink" onclick="open_modal_with_id('spithourakis2011improving')"><a>[bib]</a></button>
 								</li>
 							</ul>
                             <br/> Arxiv                    
 							<ul style="list-style-type:circle;">
                                 <li>
+                                    <div id="riedel2017simple" class="modal">
+                                      <div class="modal-content">
+                                        <span class="close" onclick="close_parent_modal(this)">&times;</span>
+                                        <p class="bib">
+                                        @article{riedel2017simple,
+                                          title={A simple but tough-to-beat baseline for the Fake News Challenge stance detection task},
+                                          author={Riedel, Benjamin and Augenstein, Isabelle and Spithourakis, Georgios P and Riedel, Sebastian},
+                                          journal={arXiv preprint arXiv:1707.03264},
+                                          year={2017}
+                                        }
+                                        </p>
+                                      </div>
+                                    </div>
                                     B. Riedel, I. Augenstein, <strong>G. Spithourakis</strong>, S. Riedel. A simple but tough-to-beat baseline for the Fake News Challenge stance detection task. <i>arXiv 2017</i>. 
                                     <a href="https://arxiv.org/abs/1707.03264">[paper]</a>
+                                    <button class="buttonlink" onclick="open_modal_with_id('riedel2017simple')"><a>[bib]</a></button>
                                 </li>                                
 							</ul>
 						</div>
@@ -370,6 +589,17 @@
 					<footer>
 						<a href="http://scholar.google.co.uk/citations?user=EALLz78AAAAJ" class="button">Google Scholar <i class="ai ai-google-scholar"></i> </a>
 					</footer>
+                    <script>
+                        function newlines_to_br(e) {
+                            var str = e.innerHTML;
+                            var str2 = str.replace(/(?:\r\n|\r|\n)/g, '<br />');
+                            e.innerHTML = str2;
+                        }
+                        var bibps = document.getElementsByClassName('bib');
+                        for (var i = 0; i < bibps.length; ++i) {
+                            newlines_to_br(bibps[i]);
+                        }
+                     </script>
 				</article>
 			</div>
 
